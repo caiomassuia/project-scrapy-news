@@ -32,8 +32,14 @@ pip install -r requirements.txt
 ## Execução
 
 Para executar o projeto, execute os seguintes comando: <br>
-1. Para acessar o banco de dados e fazer pesquisas utilizando palavras chaves: <br>
+1. Para acessar o banco de dados e fazer pesquisas utilizando palavras-chave: <br>
 ⚠ ATENCAO: somente palavras chaves encontradas no Titulo ou no Subtitulo
    * Executa o script ```python app.py``` <br>
+
+Palavras-chave sugeridas:
+* futebol
+* civil
+* vasco
+* atriz
 2. Coletar novos dados por raspagem: <br>
    * Executa o notebook ```scrapy_news.ipynb``` <br>
