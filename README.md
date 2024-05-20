@@ -8,7 +8,7 @@ Este projeto visa coletar notícias do site da Globo, armazená-las no BigQuery 
 ```scrapy_news.ipynb``` Notebook utilizado para fazer as Raspagem de dados. <br>
 
 ## Ferramentas e Tecnologias:
-* Python
+* Python 3.10.4
 * Pandas
 * Pandas-gbq
 * BeautifoulSoup
