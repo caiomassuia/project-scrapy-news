@@ -31,7 +31,7 @@ def query_news():
             for row in results:
                 num_noticia += 1
                 print(
-                    f"{'-' * 170}\n" 
+                    f"{'-' * 180}\n" 
                     f"Noticia {num_noticia}:\n\n"
                     f"url: {row.url}\n\n"
                     f"author: {row.author}\n\n"
@@ -40,7 +40,7 @@ def query_news():
                     f"subtitle: {row.subtitle}\n\n"
                     f"text: {row.text}\n"
                     )
-            print(f"{'-' * 170}\n")
+            print(f"{'-' * 180}\n")
             contiuar = input("\nDeseja continuar? Digite S/N:")
             if contiuar.upper() == "N":
                 break
