@@ -27,11 +27,11 @@ def query_news():
             num_noticia = 0
             if results.total_rows == 0:
                 print("\nNenhuma noticia encontrada com a palavra chave digitada.")
+            print(f'\n{results.total_rows} Noticias encontradas:')
             for row in results:
                 num_noticia += 1
                 print(
-                    f'{results.total_rows} Noticias encontradas:\n'
-                    f"{'-' * 200}\n" 
+                    f"{'-' * 170}\n" 
                     f"Noticia {num_noticia}:\n\n"
                     f"url: {row.url}\n\n"
                     f"author: {row.author}\n\n"
@@ -40,6 +40,7 @@ def query_news():
                     f"subtitle: {row.subtitle}\n\n"
                     f"text: {row.text}\n"
                     )
+            print(f"{'-' * 170}\n")
             contiuar = input("\nDeseja continuar? Digite S/N:")
             if contiuar.upper() == "N":
                 break
