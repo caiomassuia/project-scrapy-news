@@ -21,7 +21,7 @@ def content_title(page):
 #------------------------------------------------------------------------------------------------------------------------------------------
 def content_subtitle(page):
     """
-    Função para extrair o subtítulo de um elemento da página da web identificado pela classe "content-head__container".
+    Função para extrair o subtítulo de um elemento da página da web identificado pela classe "content-head__subtitle".
 
     Argumentos:
         page (objeto BeautifulSoup): O conteúdo HTML analisado da notícia.
