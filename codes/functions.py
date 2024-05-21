@@ -5,7 +5,7 @@ import re
 
 def content_title(page):
     """
-    Função para extrair o título de uma notícia a partir do conteúdo HTML fornecido (page).
+    Função para extrair o título de um elemento da página da web identificado pela classe "content-head__title".
 
     Argumentos:
         page (objeto BeautifulSoup): O conteúdo HTML analisado da notícia.
@@ -21,7 +21,7 @@ def content_title(page):
 #------------------------------------------------------------------------------------------------------------------------------------------
 def content_subtitle(page):
     """
-    Função para extrair o subtítulo de uma notícia a partir do conteúdo HTML fornecido (page).
+    Função para extrair o subtítulo de um elemento da página da web identificado pela classe "content-head__container".
 
     Argumentos:
         page (objeto BeautifulSoup): O conteúdo HTML analisado da notícia.
@@ -80,7 +80,7 @@ def content_author(page):
 #------------------------------------------------------------------------------------------------------------------------------------------
 def content_date(page):
     """
-    Função para extrair a data de publicação de uma notícia a partir do conteúdo HTML fornecido (page).
+    Função para extrair a data de publicação de um elemento da página da web identificado pelo itemprop "datePublished".
 
     Argumentos:
         page (objeto BeautifulSoup): O conteúdo HTML analisado da notícia.
