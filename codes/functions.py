@@ -174,26 +174,33 @@ def remove_text(text):
         text = re.sub(part, "", text)
     return text
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-def check_urls_bq():
+def check_urls_bq(bq_name_table):
     """
     Esta função recupera uma lista de URLs da tabela 'bigquery_news.tb_news_data' do BigQuery 
 
     Retorna:
         pandas.DataFrame: Um DataFrame contendo uma única coluna chamada 'url' que contém a lista de URLs ja salvas no BigQuery.
     """
+    df = pd.DataFrame(columns=['url'])
     client = bigquery.Client(credentials=credentials)
-    
-    query_job = client.query(
-    """
-    SELECT
-        url
-    FROM `project-scrapy-news.bigquery_news.tb_news_data`
-    """
-    )
-
-    results = query_job.result()
-    list_urls_bq = []
-    for row in results:
-        list_urls_bq.append(row.url)
-
-    return pd.DataFrame(list_urls_bq, columns=['url']) 
+    try:
+        query_job = client.query(
+        """
+        SELECT
+            url
+        FROM
+            `""" + bq_name_table + """`
+        """
+        )
+        
+        results = query_job.result()
+        list_urls_bq = []
+        for row in results:
+            list_urls_bq.append(row.url)
+            
+        df = pd.DataFrame(list_urls_bq, columns=['url'])
+    except Exception:
+        print("Banco de dados nao encontrado.")
+        print("Ao fazer a gravacao dos dados, o banco de dados sera criado.")
+        
+    return df
