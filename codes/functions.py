@@ -167,8 +167,11 @@ def remove_text(text):
     r"✅ clique aqui e participe do canal do gshow no whatsapp",
     r"🎧 ouça o podcast ge corinthians🎧",
     r"🔔 canal do techtudo no whatsapp: acompanhe as principais notícias, tutoriais e reviews",
-    r""
-
+    r"🎧 ouça o podcast ge vasco",
+    r"🎧",
+    r"assista tudo sobre o vasco no ge, na globo e no sportv:",
+    r"✅",
+    r"clique aqui para seguir o novo canal ge vasco no whatsapp"
 ]
     for part in parts_to_remove:
         text = re.sub(part, "", text)
