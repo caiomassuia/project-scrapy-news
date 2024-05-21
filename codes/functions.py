@@ -178,6 +178,8 @@ def check_urls_bq(bq_name_table):
     """
     Esta função recupera uma lista de URLs da tabela 'bigquery_news.tb_news_data' do BigQuery 
 
+    Argumentos:
+        bq_name_table o ID da tabela do BigQuery onde os dados serão salvos
     Retorna:
         pandas.DataFrame: Um DataFrame contendo uma única coluna chamada 'url' que contém a lista de URLs ja salvas no BigQuery.
     """
