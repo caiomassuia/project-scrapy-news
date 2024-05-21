@@ -38,8 +38,8 @@ Para executar o projeto, execute os seguintes comando: <br>
 
 Palavras-chave sugeridas:
 * futebol
-* civil
+* governo
 * vasco
-* atriz
+* adolescente
 2. Coletar novos dados por raspagem: <br>
    * Executa o notebook ```scrapy_news.ipynb``` <br>
