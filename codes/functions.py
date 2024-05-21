@@ -2,6 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import re
+from google.cloud import bigquery
+from gcp_auth import credentials
+
 
 def content_title(page):
     """
@@ -18,7 +21,7 @@ def content_title(page):
     if title is not None:
         return title.get_text().lower()
     return "título não encontrado"
-#------------------------------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def content_subtitle(page):
     """
     Função para extrair o subtítulo de um elemento da página da web identificado pela classe "content-head__subtitle".
@@ -33,7 +36,7 @@ def content_subtitle(page):
     if subtitle is not None:
         return subtitle.get_text().lower()
     return "subtítulo não encontrado"
-#------------------------------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def content_text(page):
     """
     Extrai e limpa o conteúdo textual com a funcao `remove_text` de um elemento da página da web identificado pela classe "content-text__container".
@@ -50,7 +53,7 @@ def content_text(page):
         clean_text = remove_text(text)
         return clean_text
     return "texto não encontrado"
-#------------------------------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def content_author(page):
     """
     Função para extrair o nome do autor de uma notícia a partir do conteúdo HTML fornecido (page).
@@ -77,7 +80,7 @@ def content_author(page):
     if author is not None:
         return author.get("title").lower()
     return "autor não encontrado"
-#------------------------------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def content_date(page):
     """
     Função para extrair a data de publicação de um elemento da página da web identificado pelo itemprop "datePublished".
@@ -92,7 +95,7 @@ def content_date(page):
     if date is not None:
         return date.get_text()
     return "data não encontrada"
-#------------------------------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def df_news_data(lista_urls):
     """
     Coleta dados de notícias a partir de uma lista de URLs e retorna um DataFrame.
@@ -128,7 +131,7 @@ def df_news_data(lista_urls):
 
     print("Coleta finalizada")      
     return pd.DataFrame({"url": list_url, "date": list_date, "author": list_author, "title": list_title, "subtitle": list_subtitle, "text": list_text})
-#------------------------------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def remove_text(text):
     """
     Função para remover textos indesejados do conteúdo da notícia
@@ -170,3 +173,27 @@ def remove_text(text):
     for part in parts_to_remove:
         text = re.sub(part, "", text)
     return text
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+def check_urls_bq():
+    """
+    Esta função recupera uma lista de URLs da tabela 'bigquery_news.tb_news_data' do BigQuery 
+
+    Retorna:
+        pandas.DataFrame: Um DataFrame contendo uma única coluna chamada 'url' que contém a lista de URLs ja salvas no BigQuery.
+    """
+    client = bigquery.Client(credentials=credentials)
+    
+    query_job = client.query(
+    """
+    SELECT
+        url
+    FROM `project-scrapy-news.bigquery_news.tb_news_data`
+    """
+    )
+
+    results = query_job.result()
+    list_urls_bq = []
+    for row in results:
+        list_urls_bq.append(row.url)
+
+    return pd.DataFrame(list_urls_bq, columns=['url']) 
