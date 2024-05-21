@@ -15,7 +15,7 @@ def query_news():
                     title,
                     subtitle,
                     text
-                FROM `project-scrapy-news.bigquery_news.news_data`
+                FROM `project-scrapy-news.bigquery_news.tb_news_data`
                 WHERE
                     title LIKE '%""" + user_input + """%' OR
                     subtitle LIKE '%""" + user_input + """%'

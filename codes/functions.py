@@ -156,6 +156,16 @@ def remove_text(text):
     r"📝como liberar espaço no celular android? usuários respondem no fórum techtudo.",
     r"mais do techtudo",
     r"📲 acesse o canal do g1 rs no whatsapp",
+    r"✅ clique aqui para se inscrever no canal do g1 sp no whatsapp",
+    r"📲 participe do canal do g1 sul de minas no whatsapp",
+    r"📲 canal do techtudo no whatsapp: acompanhe as principais notícias, tutoriais e reviews",
+    r"✅ clique aqui para seguir o canal de notícias internacionais do g1 no whatsapp",
+    r"✅clique e siga o canal do g1 go no whatsapp",
+    r"✅ clique aqui e participe do canal do gshow no whatsapp",
+    r"🎧 ouça o podcast ge corinthians🎧",
+    r"🔔 canal do techtudo no whatsapp: acompanhe as principais notícias, tutoriais e reviews",
+    r""
+
 ]
     for part in parts_to_remove:
         text = re.sub(part, "", text)
