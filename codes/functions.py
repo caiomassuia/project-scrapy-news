@@ -131,7 +131,7 @@ def df_news_data(lista_urls):
 #------------------------------------------------------------------------------------------------------------------------------------------
 def remove_text(text):
     """
-    Função para remover textos indesejados do conteúdo da notícia.
+    Função para remover textos indesejados do conteúdo da notícia
 
     Argumentos:
         text (str): O texto da notícia a ser processado.
