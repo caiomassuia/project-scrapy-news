@@ -2,7 +2,7 @@ from google.cloud import bigquery
 from gcp_auth import credentials
 
 def query_news():
-    client = bigquery.Client(credentials=credentials)
+    client = bigquery.Client(credentials=credentials) # credenciais de autenticação do Google Cloud Platform (GCP) para acessar o BigQuery API
     while True:
         user_input = input("\nDigite a palavra chave: ")
         try:
@@ -20,13 +20,15 @@ def query_news():
                     title LIKE '%""" + user_input + """%' OR
                     subtitle LIKE '%""" + user_input + """%'
                 """
-            )
-
+                )
+            
             results = query_job.result()
             
-            num_noticia = 0
             if results.total_rows == 0:
                 print("\nNenhuma noticia encontrada com a palavra chave digitada.")
+            
+            num_noticia = 0
+            
             print(f'\n{results.total_rows} Noticias encontradas:')
             for row in results:
                 num_noticia += 1
@@ -41,9 +43,11 @@ def query_news():
                     f"text: {row.text}\n"
                     )
             print(f"{'-' * 180}\n")
+            
             contiuar = input("\nDeseja continuar? Digite S/N:")
             if contiuar.upper() == "N":
                 break
+        
         except Exception as e:
             print(f"Erro: {e}")
 
